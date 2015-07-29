@@ -1,0 +1,34 @@
+{
+  "name": "wechat-component",
+  "version": "0.0.1",
+  "description": "Wechat component Node.js SDK",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/loulin/wechat-component"
+  },
+  "keywords": [
+    "wechat",
+    "component",
+    "third-party",
+    "platform"
+  ],
+  "author": "Lin Lou <lin.lou@hotmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/loulin/wechat-component/issues"
+  },
+  "homepage": "https://github.com/loulin/wechat-component",
+  "dependencies": {
+    "wechat-api": "^1.9.3"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5",
+    "mocha-jshint": "^2.2.3",
+    "sinon": "^1.15.4"
+  }
+}
