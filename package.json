@@ -1,6 +1,6 @@
 {
   "name": "wechat-component",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Wechat component Node.js SDK",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/loulin/wechat-component",
   "dependencies": {
-    "wechat-api": "^1.9.3"
+    "wechat-api": "^1.13.0"
   },
   "devDependencies": {
     "chai": "^3.2.0",
