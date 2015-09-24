@@ -15,7 +15,7 @@
   "latedef": "nofunc",
   "loopfunc": false,
   "maxerr": 7,
-  "newcap": true,
+  "newcap": false,
   "node": true,
   "nonew": true,
   "plusplus": false,
@@ -27,6 +27,5 @@
   "supernew": false,
   "trailing": true,
   "undef": true,
-  "unused": true,
   "white": true
 }
