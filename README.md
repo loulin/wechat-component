@@ -39,12 +39,8 @@ api.getAccessToken = async (callback) => {
     api.saveTokenAsync = util.promisify(api.saveToken);
 
     const refresh = await api.getTokenAsync();
-    const result = await component.getAuthorizerToken(authorizerAppid, refresh.refreshToken); // not recommended, should use a center server
-    const token = {
-      accessToken: result.authorizer_access_token,
-      refreshToken: result.authorizer_refresh_token,
-      expireTime: new Date().getTime() + ((result.expires_in - 10) * 1000),
-    };
+    const token = await service.getAuthorizerToken(authorizerAppid, refresh.refreshToken);
+    // service should use a Central Control Server
 
     await api.saveTokenAsync(token);
 
@@ -63,18 +59,15 @@ const oauth = new OAuth(authorizerAppid, null, getToken, saveToken);
 oauth.getAccessToken = async (code, callback) => {
   const token = await component.getOAuthAccessToken(authorizerAppid, code);
 
-  token.create_at = new Date().getTime();
-  oauth.saveToken(authorizerAppid, token, err => callback(err, token));
+  oauth.saveToken(token.openid, token, err => callback(err, { data: token }));
 };
 
 oauth.refreshAccessToken = async (refreshToken, callback) => {
   const token = await component.refreshOAuthAccessToken(authorizerAppid, refreshToken);
 
-  token.create_at = new Date().getTime();
-  oauth.saveToken(authorizerAppid, token, err => callback(err, token));
+  oauth.saveToken(token.openid, token, err => callback(err, { data: token }));
 };
 
-oauth.getAuthorizeURL = (redirect, state, scope) => {
-  return component.getOAuthAuthorizeURL(authorizerAppid, redirect, scope, state);
-};
+oauth.getAuthorizeURL = (redirect, state, scope) => component
+  .getOAuthAuthorizeURL(authorizerAppid, redirect, scope, state);
 ```

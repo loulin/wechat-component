@@ -93,9 +93,9 @@ class Component {
         baseUrl: this.baseUrl,
         method: 'POST',
         json: true,
-        qs: { [accessTokenKey]: token.accessToken },
         // transform,
         ...options,
+        qs: { [accessTokenKey]: token.accessToken, ...options.qs },
       }).then(transform);
 
       if (!retried && result && result.errcode === 40001) {
