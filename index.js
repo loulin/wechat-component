@@ -119,7 +119,7 @@ class Component {
     let type = authType;
     let callback = done;
 
-    if (typeof authType === 'function') {
+    if (!authType || typeof authType === 'function') {
       type = 3;
       callback = authType;
     }
