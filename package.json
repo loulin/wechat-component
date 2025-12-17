@@ -1,35 +1,65 @@
 {
   "name": "wechat-component",
-  "version": "0.0.7",
-  "description": "Wechat component Node.js SDK",
-  "main": "index.js",
+  "version": "3.0.0",
+  "description": "微信开放平台第三方平台 Node.js SDK",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "mocha ./tests"
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/loulin/wechat-component"
+    "url": "git+https://github.com/loulin/wechat-component.git"
   },
   "keywords": [
     "wechat",
+    "weixin",
     "component",
     "third-party",
-    "platform"
+    "platform",
+    "微信",
+    "开放平台",
+    "第三方平台"
   ],
   "author": "Lin Lou <lin.lou@hotmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/loulin/wechat-component/issues"
   },
-  "homepage": "https://github.com/loulin/wechat-component",
-  "dependencies": {
-    "wechat-api": "^1.15.0",
-    "wechat-oauth": "^1.1.0"
-  },
+  "homepage": "https://github.com/loulin/wechat-component#readme",
   "devDependencies": {
-    "chai": "^3.2.0",
-    "mocha": "^2.2.5",
-    "mocha-jshint": "^2.2.3",
-    "sinon": "^1.15.4"
+    "@eslint/js": "^9.17.0",
+    "@types/node": "^22.10.2",
+    "eslint": "^9.17.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.1",
+    "vitest": "^2.1.8"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
